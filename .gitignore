@@ -1,10 +1,5 @@
-# Custom
-alchemy_book
-
-
-
-# Created by https://www.toptal.com/developers/gitignore/api/node,linux,macos,elixir,windows,phoenix
-# Edit at https://www.toptal.com/developers/gitignore?templates=node,linux,macos,elixir,windows,phoenix
+# Created by https://www.toptal.com/developers/gitignore/api/node,linux,macos,elixir,phoenix,windows,vagrant
+# Edit at https://www.toptal.com/developers/gitignore?templates=node,linux,macos,elixir,phoenix,windows,vagrant
 
 ### Elixir ###
 /_build
@@ -199,6 +194,16 @@ dist
 /installer/doc
 /installer/deps
 
+### Vagrant ###
+# General
+.vagrant/
+
+# Log files (if you are creating logs in debug mode, uncomment this)
+# *.log
+
+### Vagrant Patch ###
+*.box
+
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
@@ -225,4 +230,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/node,linux,macos,elixir,windows,phoenix
+# End of https://www.toptal.com/developers/gitignore/api/node,linux,macos,elixir,phoenix,windows,vagrant
