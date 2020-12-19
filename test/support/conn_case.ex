@@ -25,7 +25,7 @@ defmodule AlchemyBook.ConnCase do
       import Ecto.Changeset
       import Ecto.Query
 
-      import AlchemyBook.Router.Helpers
+      import AlchemyBookWeb.Router.Helpers
 
       # The default endpoint for testing
       @endpoint AlchemyBook.Endpoint
