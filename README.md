@@ -3,7 +3,7 @@
 # The Alchemy Book
 
 This application is a toy collaborative editor that demonstrates using
-Conflict-Free Replicated Data Types (CRDTs) to achieve real-time synchronization. The server 
+Conflict-Free Replicated Data Types (CRDTs) to achieve real-time synchronization. The server
 is written in  Elixir and mostly of the CRDT logic is written in Typescript.
 
 The aim of this project is educative and optimized for understandability rather
@@ -21,9 +21,7 @@ Assuming you have Elixir installed, and Postgres installed and running
 (see Elixir & Phoenix [setup guide](https://hexdocs.pm/phoenix/up_and_running.html))
 
 ```
-mix deps.get
-mix ecto.create
-mix ecto.migrate
+mix setup
 ```
 
 Run with
