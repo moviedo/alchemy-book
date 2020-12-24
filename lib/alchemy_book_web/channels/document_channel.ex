@@ -91,7 +91,7 @@ defmodule AlchemyBook.DocumentChannel do
             cursor: nil,
             online_at: :os.system_time(:milli_seconds),
             user_id: user_id,
-            username: Repo.get!(User, user_id).username
+            username: AlchemyBook.Repo.get!(User, user_id).username
         })
 
         Logger.info "Document #{document_id} now has " <>

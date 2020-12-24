@@ -11,7 +11,7 @@ defmodule AlchemyBookWeb.UserController do
 
   def create(conn, %{"user" => user_params}) do
     changeset = User.registration_changeset(%User{}, user_params)
-    case Repo.insert(changeset) do
+    case AlchemyBook.Repo.insert(changeset) do
       {:ok, user} ->
         conn
         |> AlchemyBook.Auth.login(user)
@@ -24,9 +24,9 @@ defmodule AlchemyBookWeb.UserController do
 
   def create_anonymous() do
     unique_user = "Guest" <> to_string(:rand.uniform(99999));
-    if Repo.get_by(User, username: unique_user) == nil do
+    if AlchemyBook.Repo.get_by(User, username: unique_user) == nil do
       anonymous = %AlchemyBook.User{name: unique_user, username: unique_user, anonymous: true}
-      Repo.insert!(anonymous)
+      AlchemyBook.Repo.insert!(anonymous)
     else
       # Generate random usernames until we find an unique one
       create_anonymous()

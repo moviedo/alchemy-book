@@ -23,7 +23,7 @@ defmodule AlchemyBookWeb.DocumentController do
 
   def index(conn, _params, _user) do
 
-    documents = Repo.all(Document)
+    documents = AlchemyBook.Repo.all(Document)
     render(conn, "index.html", documents: documents)
   end
 
@@ -40,7 +40,7 @@ defmodule AlchemyBookWeb.DocumentController do
       |> Ecto.build_assoc(:documents)
       |> Document.changeset(document_params)
 
-    case Repo.insert(changeset) do
+    case AlchemyBook.Repo.insert(changeset) do
       {:ok, document} ->
         conn
         |> redirect(to: Path.join(Routes.document_path(conn, :index),
@@ -52,7 +52,7 @@ defmodule AlchemyBookWeb.DocumentController do
 
   def show(conn, %{"id" => id}, _user) do
     with {:ok, [actual_id]} <- Document.id_from_slug(id),
-         document = %Document{} <- Repo.get(Document, actual_id)
+         document = %Document{} <- AlchemyBook.Repo.get(Document, actual_id)
     do
       render(conn, "show.html", document: document)
     else
@@ -64,16 +64,16 @@ defmodule AlchemyBookWeb.DocumentController do
   end
 
   def edit(conn, %{"id" => id}, _user) do
-    document = Repo.get!(Document, id)
+    document = AlchemyBook.Repo.get!(Document, id)
     changeset = Document.changeset(document)
     render(conn, "edit.html", document: document, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "document" => document_params}, _user) do
-    document = Repo.get!(Document, id)
+    document = AlchemyBook.Repo.get!(Document, id)
     changeset = Document.changeset(document, document_params)
 
-    case Repo.update(changeset) do
+    case AlchemyBook.Repo.update(changeset) do
       {:ok, document} ->
         conn
         |> put_flash(:info, "Document updated successfully.")
@@ -84,11 +84,11 @@ defmodule AlchemyBookWeb.DocumentController do
   end
 
   def delete(conn, %{"id" => id}, _user) do
-    document = Repo.get!(Document, id)
+    document = AlchemyBook.Repo.get!(Document, id)
 
     # Here we use delete! (with a bang) because we expect
     # it to always work (and if it does not, it will raise).
-    Repo.delete!(document)
+    AlchemyBook.Repo.delete!(document)
 
     conn
     |> put_flash(:info, "Document deleted successfully.")
@@ -96,9 +96,9 @@ defmodule AlchemyBookWeb.DocumentController do
   end
 
   def save(id, crdt) do
-    document = Repo.get!(Document, id)
+    document = AlchemyBook.Repo.get!(Document, id)
     changeset = Ecto.Changeset.change(document, contents: Document.crdt_to_json(crdt))
-    Repo.update!(changeset)
+    AlchemyBook.Repo.update!(changeset)
   end
 
   # defp user_documents(user) do
