@@ -1,5 +1,5 @@
 import { List } from 'immutable'
-import { LocalChange } from './crdt'
+import * as LocalChange from './local_change'
 import * as Char from './char'
 
 /**
@@ -18,7 +18,7 @@ function findNewline (line) {
  * @typedef {List<List<import('./char').Char>>} MultiCharList
  * @typedef {Array<import('./char').Char>} RemovedChar
  * @param {MultiCharList} crdt
- * @param {import('./local_change').LocalChange} change
+ * @param {LocalChange.LocalChange} change
  * @return {[MultiCharList, RemovedChar]}
  */
 function updateCrdtRemove (crdt, change) {
@@ -69,7 +69,7 @@ function updateCrdtRemove (crdt, change) {
  * @param {MultiCharList} crdt
  * @param {Number} lamport
  * @param {Number} site
- * @param {import('./local_change').LocalChange} change
+ * @param {LocalChange.LocalChange} change
  * @return {[MultiCharList, RemovedChar]}
  */
 function updateCrdtInsert (crdt, lamport, site, change) {
@@ -300,7 +300,7 @@ export class LinearCrdt {
    * Remotely insert given char into crdt line.
    *
    * @param {import('./char').Char} char
-   * @returns {import('./local_change').LocalChange | null}
+   * @returns {LocalChange.LocalChange | null}
    */
   remoteInsert (char) {
     const [lineIndex, ch, found] = findPosition(this.crdt, char)
@@ -329,7 +329,7 @@ export class LinearCrdt {
    * Remotely delete given char into crdt line.
    *
    * @param {import('./char').Char} char
-   * @returns {import('./local_change').LocalChange | null}
+   * @returns {LocalChange.LocalChange | null}
    */
   remoteDelete (char) {
     const [lineIndex, ch, found] = findPosition(this.crdt, char)
@@ -367,7 +367,7 @@ export class LinearCrdt {
    *
    * @param {Numbder} lamport
    * @param {Numbder} site
-   * @param {import('./local_change').LocalChange} change
+   * @param {LocalChange.LocalChange} change
    * @returns {Array<import('./char').Char>}
    */
   localInsert (lamport, site, change) {
@@ -379,7 +379,7 @@ export class LinearCrdt {
   /**
    * Remotely delete given char into crdt line.
    *
-   * @param {import('./local_change').LocalChange} change
+   * @param {LocalChange.LocalChange} change
    * @returns {Array<import('./char').Char>}
    */
   localDelete (change) {
