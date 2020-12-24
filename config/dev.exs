@@ -22,11 +22,12 @@ config :alchemy_book, AlchemyBookWeb.Endpoint,
   code_reloader: true,
   check_origin: false,
   watchers: [
-    # node: [
-    #   "node_modules/.bin/vue-cli-service",
-    #   "serve",
-    #   cd: Path.expand("../assets", __DIR__)
-    # ]
+    node: [
+      "node_modules/.bin/vue-cli-service",
+      "serve",
+      "--stdin",
+      cd: Path.expand("../assets", __DIR__)
+    ]
   ]
 
 # ## SSL Support
