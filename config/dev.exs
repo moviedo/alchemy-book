@@ -23,9 +23,12 @@ config :alchemy_book, AlchemyBookWeb.Endpoint,
   check_origin: false,
   watchers: [
     node: [
-      "node_modules/.bin/vue-cli-service",
-      "serve",
-      "--stdin",
+      "node_modules/webpack/bin/webpack.js",
+      "--mode",
+      "development",
+      "--watch-options-stdin",
+      "--config",
+      "node_modules/@vue/cli-service/webpack.config.js",
       cd: Path.expand("../assets", __DIR__)
     ]
   ]

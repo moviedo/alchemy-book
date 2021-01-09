@@ -16,20 +16,18 @@ export default {
 <style lang="scss">
 /* This file is for your main application css. */
 @import "~codemirror/lib/codemirror.css";
-@import "zenburn.css";
+@import "../public/css/zenburn.css";
 
 @font-face {
   font-family: "Kingthings Trypewriter 2";
-  src: url("~/../fonts/kingthings-trypewriter-2.ttf") format("truetype");
+  src: url("../public/fonts/kingthings-trypewriter-2.ttf") format("truetype");
 }
 
 .CodeMirror {
   height: 100%;
-
-  font-family: "Kingthings Trypewriter 2";
+  font-family: "Kingthings Trypewriter 2", sans-serif;
   font-size: 1.5em;
   background-color: transparent;
-
   float: left;
 }
 
@@ -49,7 +47,7 @@ export default {
 
 .cm-s-zenburn .CodeMirror-gutters {
   background-color: transparent !important;
-  border: 0px;
+  border: none;
 }
 
 html,
@@ -58,11 +56,10 @@ body {
 }
 
 body {
-  margin: 0px;
-  top: 0px;
-
+  margin: 0;
+  top: 0;
   color: ghostwhite;
-  font-family: "Kingthings Trypewriter 2";
+  font-family: "Kingthings Trypewriter 2", sans-serif;
 }
 
 a {
@@ -78,22 +75,18 @@ a:hover {
 }
 
 .header {
-  background-image: url("/images/wood_header.png");
-  top: 0px;
-
+  background-image: url("../public/images/wood_header.png");
+  top: 0;
   width: 100%;
   height: 67px;
-
   min-width: 500px;
 }
 
 .container {
-  background-image: url("/images/blackboard.jpg");
-
-  margin: 0px;
+  background-image: url("../public/images/blackboard.jpg");
+  margin: 0;
   height: calc(100vh - 67px);
   width: 100%;
-
   display: flex;
   flex-direction: column;
 }
@@ -104,15 +97,13 @@ a:hover {
 }
 
 .code-container {
-  padding: 20px 0px;
+  padding: 20px 0;
   overflow-x: auto;
   overflow-y: auto;
   flex-grow: 1;
 }
 
 .intro {
-  height: inherit;
-
   text-align: center;
   font-size: 1.5em;
 
@@ -120,7 +111,6 @@ a:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   padding: 50px;
   height: calc(100% - 100px);
 }
@@ -128,17 +118,16 @@ a:hover {
 .nav-left {
   margin-top: 15px;
   position: absolute;
-  left: 0px;
-  padding: 0px 20px;
-
+  left: 0;
+  padding: 0 20px;
   white-space: nowrap;
 }
 
 .nav-right {
   position: absolute;
-  right: 0px;
+  right: 0;
   top: 20px;
-  padding: 0px 20px;
+  padding: 0 20px;
 }
 
 .user {
@@ -152,7 +141,7 @@ a:hover {
 }
 
 .username {
-  margin: 0px 10px;
+  margin: 0 10px;
 }
 
 .circle {
