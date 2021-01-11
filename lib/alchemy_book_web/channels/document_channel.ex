@@ -3,7 +3,7 @@ defmodule AlchemyBook.DocumentChannel do
 
     use AlchemyBookWeb, :channel
 
-    alias AlchemyBook.Presence
+    alias AlchemyBookWeb.Presence
 
     alias AlchemyBook.User
     alias AlchemyBook.Document
