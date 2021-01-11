@@ -1,4 +1,4 @@
-defmodule AlchemyBook.Presence do
+defmodule AlchemyBookWeb.Presence do
   @moduledoc """
   Provides presence tracking to channels and processes.
 
