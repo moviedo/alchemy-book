@@ -46,7 +46,7 @@ defmodule AlchemyBook.DocumentSession do
       now = :os.system_time(:millisecond)
       if last_save < last_update do
           crdt = get(session)
-          AlchemyBook.DocumentController.save(document_id, crdt)
+          AlchemyBookWeb.DocumentController.save(document_id, crdt)
           Agent.update(session, fn session -> %{ session | last_save: now } end)
       end
   end
