@@ -1,0 +1,99 @@
+html,
+body {
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  top: 0;
+  color: ghostwhite;
+  font-family: "Kingthings Trypewriter 2", sans-serif;
+}
+
+a {
+  color: ghostwhite;
+}
+
+a:visited {
+  color: ghostwhite;
+}
+
+a:hover {
+  color: antiquewhite;
+}
+
+.header {
+  background-image: url("../images/wood_header.png");
+  top: 0;
+  width: 100%;
+  height: 67px;
+  min-width: 500px;
+}
+
+.container {
+  background-image: url("../images/blackboard.jpg");
+  margin: 0;
+  height: calc(100vh - 67px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.warning {
+  padding: 20px 40px;
+  text-align: center;
+}
+
+.code-container {
+  padding: 20px 0;
+  overflow-x: auto;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.intro {
+  text-align: center;
+  font-size: 1.5em;
+
+  /* Center vertically */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px;
+  height: calc(100% - 100px);
+}
+
+.nav-left {
+  margin-top: 15px;
+  position: absolute;
+  left: 0;
+  padding: 0 20px;
+  white-space: nowrap;
+}
+
+.nav-right {
+  position: absolute;
+  right: 0;
+  top: 20px;
+  padding: 0 20px;
+}
+
+.user {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.user * {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.username {
+  margin: 0 10px;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
