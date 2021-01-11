@@ -12,11 +12,14 @@ defmodule AlchemyBook.Application do
       # Start the Telemetry supervisor
       AlchemyBookWeb.Telemetry,
       # Start the PubSub system
-      {Phoenix.PubSub, [name: AlchemyBook.PubSub, adapter: Phoenix.PubSub.PG2]},
+      {Phoenix.PubSub, name: AlchemyBook.PubSub},
       # Start the Endpoint (http/https)
-      AlchemyBookWeb.Endpoint
+      AlchemyBookWeb.Endpoint,
+      # Start the Presence tracker
+      AlchemyBookWeb.Presence,
       # Start a worker by calling: AlchemyBook.Worker.start_link(arg)
       # {AlchemyBook.Worker, arg}
+      AlchemyBook.DocumentRegistry,
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

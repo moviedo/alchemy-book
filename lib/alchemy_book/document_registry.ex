@@ -6,11 +6,9 @@ defmodule AlchemyBook.DocumentRegistry do
   alias AlchemyBook.Document
   alias AlchemyBook.DocumentSession
 
-  def init(init_arg) do
-    {:ok, init_arg}
-  end
+   ## Client API
 
-  def start_link() do
+  def start_link(_opts) do
     GenServer.start_link(__MODULE__, %{}, name: __MODULE__)
   end
 
@@ -22,6 +20,14 @@ defmodule AlchemyBook.DocumentRegistry do
     GenServer.cast(__MODULE__, {:close, document_id})
   end
 
+  ## Defining GenServer Callbacks
+
+  @impl true
+  def init(init_arg) do
+    {:ok, init_arg}
+  end
+
+  @impl true
   def handle_call({:lookup, document_id}, _from, sessions) do
     case Map.fetch(sessions, document_id) do
       {:ok, session} -> {:reply, session, sessions}
@@ -34,6 +40,7 @@ defmodule AlchemyBook.DocumentRegistry do
     end
   end
 
+  @impl true
   def handle_cast({:close, document_id}, sessions) do
     case Map.fetch(sessions, document_id) do
       {:ok, session} ->
