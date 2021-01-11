@@ -1,24 +1,24 @@
 <template>
-  <div className="page">
-    <header className="header">
-      <div className="nav-left indicators">
-        <div className="user" v-for="presence in presences" :key="presence.userId">
-          <div className="circle" :style="{ background: presence.color }"></div>
-          <div className="username">{{ presence.username }}</div>
+  <div class="page">
+    <header class="header">
+      <div class="nav-left indicators">
+        <div class="user" v-for="presence in presences" :key="presence.userId">
+          <div class="circle" :style="{ background: presence.color }"></div>
+          <div class="username">{{ presence.username }}</div>
         </div>
       </div>
 
-      <div className="nav-right">
+      <div class="nav-right">
         <a href="/">back to main</a>
       </div>
     </header>
 
-    <div className="container">
-      <div v-if="disconnected" className="warning">
+    <div class="container">
+      <div v-if="disconnected" class="warning">
         <p>Disconnected due to connection error - please refresh</p>
       </div>
 
-      <div v-if="exceededLimit" className="warning">
+      <div v-if="exceededLimit" class="warning">
         <p>Operation cancelled: Exceeded the 2500 character limit of this document</p>
         <p>
           I know you'd like to stress test this application but my server is pretty small! Please
@@ -26,7 +26,7 @@
         </p>
       </div>
 
-      <div className="code-container">
+      <div class="code-container">
         <textarea ref="editor-root"></textarea>
       </div>
     </div>
