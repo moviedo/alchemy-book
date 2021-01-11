@@ -3,7 +3,7 @@ defmodule AlchemyBook.UserSocket do
 
   use Phoenix.Socket
 
-  alias AlchemyBook.Presence
+  alias AlchemyBookWeb.Presence
 
   @all "all_users"
   @max_token_age 2 * 7 * 24 * 60 * 60
@@ -26,7 +26,7 @@ defmodule AlchemyBook.UserSocket do
   #
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
-  def connect(%{"token" => token}, socket) do
+  def connect(%{"token" => token}, socket, _connect_info) do
     case Phoenix.Token.verify(socket, "user socket", token, max_age: @max_token_age) do
       {:ok, user_id} ->
         Presence.track(self(), @all, user_id, %{})
