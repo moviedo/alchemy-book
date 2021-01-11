@@ -6,6 +6,7 @@ defmodule AlchemyBookWeb.DocumentController do
   alias AlchemyBook.Document
   import Ecto
 
+  plug :put_layout, "document.html"
 
   # Turns <action>(conn, params) into <action>(conn, params, user)
   def action(conn, _) do
