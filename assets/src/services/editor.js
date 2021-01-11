@@ -3,7 +3,7 @@ import * as CodeMirror from 'codemirror'
 import { updateAndConvertLocalToRemote, updateAndConvertRemoteToLocal } from './crdt'
 import { LinearCrdt } from './crdt_linear'
 import History from './history'
-import * as RemoteCursor from './remote_cursor'
+import RemoteCursor from './remote_cursor'
 
 const IGNORE_REMOTE = 'ignore_remote'
 const UNDO_REDO = 'undo_redo'
@@ -29,21 +29,21 @@ export default class Editor {
       lineNumbers: true,
       theme: 'zenburn'
     })
-    this.codemirror.on('beforeChange', this.beforeChange)
-    this.codemirror.on('change', this.onLocalChange)
-    this.codemirror.on('cursorActivity', this.onLocalCursor)
-    this.codemirror.on('keyup', this.onKeyUp)
+    this.codemirror.on('beforeChange', this.beforeChange.bind(this))
+    this.codemirror.on('change', this.onLocalChange.bind(this))
+    this.codemirror.on('cursorActivity', this.onLocalCursor.bind(this))
+    this.codemirror.on('keyup', this.onKeyUp.bind(this))
     /**
      * @property {import('./editor_socket').defaultocket}
      */
     this.editorSocket = editorSocket
-    this.editorSocket.connect(this.onInit, this.onRemoteChange)
+    this.editorSocket.connect(this.onInit.bind(this), this.onRemoteChange.bind(this))
     /**
      * Map user_id -> site_id -> cursor element
      * Since the same user could have the same document open on multiple tabs,
      * thus have multiple sites.
      *
-     * @property {Map<Number, Map<Number, RemoteCursor.RemoteCursor>>}
+     * @property {Map<Number, Map<Number, RemoteCursor>>}
      */
     this.cursorWidgets = new Map()
     /**

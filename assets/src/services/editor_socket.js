@@ -109,13 +109,15 @@ export default class EditorSocket {
    * @return {UserPresence}
    */
   listPresenceBy (siteId, { metas }) {
+    const firstMeta = metas ? metas[0] : {};
+
     return {
-      color: metas[0].color,
-      cursor: metas[0].cursor,
-      onlineAt: metas[0].online_at,
+      color: firstMeta.color,
+      cursor: firstMeta.cursor,
+      onlineAt: firstMeta.online_at,
       siteId: parseInt(siteId, 10),
-      userId: metas[0].user_id,
-      username: metas[0].username
+      userId: firstMeta.user_id,
+      username: firstMeta.username
     }
   }
 }
